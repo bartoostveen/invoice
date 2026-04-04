@@ -143,16 +143,16 @@ func writeFooter(pdf *gopdf.GoPdf, id string) {
 	pdf.Br(48)
 }
 
-func writeRow(pdf *gopdf.GoPdf, item string, quantity int, rate float64, currency string) {
+func writeRow(pdf *gopdf.GoPdf, item string, quantity float64, rate float64, currency string) {
 	_ = pdf.SetFont("Inter", "", 11)
 	pdf.SetTextColor(0, 0, 0)
 
-	total := float64(quantity) * rate
+	total := quantity * rate
 	amount := strconv.FormatFloat(total, 'f', 2, 64)
 
 	_ = pdf.Cell(nil, item)
 	pdf.SetX(quantityColumnOffset)
-	_ = pdf.Cell(nil, strconv.Itoa(quantity))
+	_ = pdf.Cell(nil, strconv.FormatFloat(quantity, 'f', 1, 64))
 	pdf.SetX(rateColumnOffset)
 	_ = pdf.Cell(nil, getCurrencySymbol(currency)+strconv.FormatFloat(rate, 'f', 2, 64))
 	pdf.SetX(amountColumnOffset)
@@ -191,13 +191,15 @@ func writeTotal(pdf *gopdf.GoPdf, locale Locale, label string, total float64, cu
 func getImageDimension(imagePath string) (int, int) {
 	file, err := os.Open(imagePath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
+		_, _ = fmt.Fprintf(os.Stderr, "%v\n", err)
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		_ = file.Close()
+	}(file)
 
-	image, _, err := image.DecodeConfig(file)
+	img, _, err := image.DecodeConfig(file)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%s: %v\n", imagePath, err)
+		_, _ = fmt.Fprintf(os.Stderr, "%s: %v\n", imagePath, err)
 	}
-	return image.Width, image.Height
+	return img.Width, img.Height
 }

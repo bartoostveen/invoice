@@ -35,7 +35,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&file.Title, "title", "", "")
 
 	rootCmd.PersistentFlags().Float64SliceVarP(&file.Rates, "rate", "r", []float64{}, "")
-	rootCmd.PersistentFlags().IntSliceVarP(&file.Quantities, "quantity", "q", []int{}, "")
+	rootCmd.PersistentFlags().Float64SliceVarP(&file.Quantities, "quantity", "q", []float64{}, "")
 	rootCmd.PersistentFlags().StringSliceVarP(&file.Items, "item", "i", []string{}, "")
 
 	rootCmd.PersistentFlags().StringVarP(&file.Logo, "logo", "l", "", "")

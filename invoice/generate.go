@@ -63,7 +63,7 @@ func Generate(invoice Invoice, defaultInvoice Invoice, importPath string, locale
 
 	subtotal := 0.0
 	for i := range invoice.Items {
-		q := 1
+		q := 1.0
 		if len(invoice.Quantities) > i {
 			q = invoice.Quantities[i]
 		}
@@ -79,7 +79,7 @@ func Generate(invoice Invoice, defaultInvoice Invoice, importPath string, locale
 		}
 
 		writeRow(&pdf, invoice.Items[i], q, r, invoice.Currency)
-		subtotal += float64(q) * r
+		subtotal += q * r
 	}
 
 	if invoice.Note != "" {

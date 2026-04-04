@@ -94,7 +94,7 @@ type Invoice struct {
 	Due  string `json:"due" yaml:"due"`
 
 	Items      []string  `json:"items" yaml:"items"`
-	Quantities []int     `json:"quantities" yaml:"quantities"`
+	Quantities []float64 `json:"quantities" yaml:"quantities"`
 	Rates      []float64 `json:"rates" yaml:"rates"`
 
 	Tax      float64 `json:"tax" yaml:"tax"`
@@ -122,7 +122,7 @@ func DefaultInvoice(locale Locale) Invoice {
 		Id:         now.Format("20060102"),
 		Title:      locale.DefaultTitle,
 		Rates:      []float64{25},
-		Quantities: []int{2},
+		Quantities: []float64{2},
 		Items:      []string{locale.DefaultItem},
 		From:       locale.DefaultFrom,
 		To:         locale.DefaultTo,
