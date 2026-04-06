@@ -152,7 +152,7 @@ func writeRow(pdf *gopdf.GoPdf, item string, quantity float64, rate float64, cur
 
 	_ = pdf.Cell(nil, item)
 	pdf.SetX(quantityColumnOffset)
-	_ = pdf.Cell(nil, strconv.FormatFloat(quantity, 'f', 1, 64))
+	_ = pdf.Cell(nil, strings.TrimSuffix(strconv.FormatFloat(quantity, 'f', 1, 64), ".0"))
 	pdf.SetX(rateColumnOffset)
 	_ = pdf.Cell(nil, getCurrencySymbol(currency)+strconv.FormatFloat(rate, 'f', 2, 64))
 	pdf.SetX(amountColumnOffset)
