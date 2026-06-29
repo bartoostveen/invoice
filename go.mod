@@ -2,7 +2,7 @@ module github.com/maaslalani/invoice
 
 go 1.24.0
 
-toolchain go1.24.4
+toolchain go1.26.4
 
 require (
 	github.com/charmbracelet/glamour v0.10.0
