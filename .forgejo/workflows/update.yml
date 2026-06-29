@@ -2,7 +2,6 @@
   schedule:
     - cron: 0 0 * * 0
   workflow_dispatch: {}
-
 jobs:
   nix-flake-update:
     runs-on: [gpg, native-x86_64-linux]
@@ -12,10 +11,8 @@ jobs:
         with:
           gpg-privkey: ${{ secrets.GPG_PRIVKEY }}
           gpg-key-id: ${{ vars.GPG_KEY_ID }}
-
       - name: nix flake update
         run: nix flake update --commit-lock-file
-
       - name: send PR
         run: |
           base="$(git branch --show-current)"
