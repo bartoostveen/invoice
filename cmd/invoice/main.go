@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/maaslalani/invoice/invoice"
+	"go.bartoostveen.nl/invoice/internal"
 	"gopkg.in/yaml.v3"
 
 	"github.com/charmbracelet/fang"
@@ -22,8 +22,8 @@ import (
 var (
 	importPath string
 	output     string
-	localeName = invoice.English.Locale
-	file       = invoice.Invoice{}
+	localeName = internal.English.Locale
+	file       = internal.Invoice{}
 )
 
 func init() {
@@ -65,13 +65,13 @@ var generateCmd = &cobra.Command{
 	Short: "Generate an invoice",
 	Long:  `Generate an invoice`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		locale, err := invoice.GetLocale(localeName)
+		locale, err := internal.GetLocale(localeName)
 		if err != nil {
 			return err
 		}
 
-		defaultInvoice := invoice.DefaultInvoice(locale)
-		output, err := invoice.Generate(file, defaultInvoice, importPath, locale, output)
+		defaultInvoice := internal.DefaultInvoice(locale)
+		output, err := internal.Generate(file, defaultInvoice, importPath, locale, output)
 		if err != nil {
 			return err
 		}
@@ -85,14 +85,14 @@ var generateCmd = &cobra.Command{
 	},
 }
 
-func mergedInvoice() (*invoice.Invoice, error) {
-	locale, err := invoice.GetLocale(localeName)
+func mergedInvoice() (*internal.Invoice, error) {
+	locale, err := internal.GetLocale(localeName)
 	if err != nil {
 		return nil, err
 	}
 
-	defaultInvoice := invoice.DefaultInvoice(locale)
-	return invoice.MergeInvoices(file, defaultInvoice, nil)
+	defaultInvoice := internal.DefaultInvoice(locale)
+	return internal.MergeInvoices(file, defaultInvoice, nil)
 }
 
 var jsonCmd = &cobra.Command{
