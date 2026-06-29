@@ -6,7 +6,7 @@ toolchain go1.26.4
 
 require (
 	github.com/charmbracelet/glamour v0.10.0
-	github.com/signintech/gopdf v0.19.0
+	github.com/signintech/gopdf v0.36.1
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.17.0
 	gopkg.in/yaml.v3 v3.0.1
