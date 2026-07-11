@@ -59,7 +59,7 @@ require (
 
 require (
 	dario.cat/mergo v1.0.2
-	github.com/charmbracelet/fang v1.0.0
+	github.com/charmbracelet/fang/v2 v2.0.1
 	github.com/fsnotify/fsnotify v1.10.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/klauspost/lctime v0.1.0
