@@ -12,7 +12,7 @@ import (
 	"go.bartoostveen.nl/invoice/internal"
 	"gopkg.in/yaml.v3"
 
-	"github.com/charmbracelet/fang"
+	"charm.land/fang/v2"
 	"github.com/charmbracelet/glamour"
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
