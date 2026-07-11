@@ -13,7 +13,7 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"charm.land/fang/v2"
-	"github.com/charmbracelet/glamour"
+	"charm.land/glamour/v2"
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
 	"github.com/spf13/viper"
