@@ -6,7 +6,7 @@ toolchain go1.26.4
 
 require (
 	charm.land/glamour/v2 v2.0.1
-	github.com/signintech/gopdf v0.36.2
+	github.com/signintech/gopdf v0.37.0
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/viper v1.21.0
 	gopkg.in/yaml.v3 v3.0.1
