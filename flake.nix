@@ -60,6 +60,7 @@
           };
 
           packages.default = pkgs.callPackage ./package.nix { };
+          packages.invoice = self'.packages.default;
 
           packages.tape = pkgs.writeShellApplication {
             name = "tape";
