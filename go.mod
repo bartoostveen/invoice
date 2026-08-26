@@ -2,7 +2,7 @@ module go.bartoostveen.nl/invoice
 
 go 1.25.8
 
-toolchain go1.26.5
+toolchain go1.27.0
 
 require (
 	charm.land/glamour/v2 v2.0.1
