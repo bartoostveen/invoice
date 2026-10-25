@@ -62,6 +62,8 @@
           packages.default = pkgs.callPackage ./package.nix { };
           packages.invoice = self'.packages.default;
 
+          checks = { inherit (self'.packages) invoice; };
+
           packages.tape = pkgs.writeShellApplication {
             name = "tape";
 
