@@ -1,8 +1,6 @@
 module go.bartoostveen.nl/invoice
 
-go 1.27.0
-
-toolchain go1.27.3
+go 1.27.3
 
 require (
 	charm.land/fang/v2 v2.0.1

@@ -1,11 +1,11 @@
 {
-  buildGo127Module,
+  buildGoModule,
   lib,
   installShellFiles,
   ...
 }:
 
-buildGo127Module (finalAttrs: {
+buildGoModule (finalAttrs: {
   pname = "invoice";
   version = "0.0.1";
 

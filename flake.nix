@@ -29,12 +29,30 @@
         {
           self',
           pkgs,
+          lib,
+          system,
           ...
         }:
+
+        let
+          go = pkgs.go_1_27;
+          buildGoModule = pkgs.buildGo127Module;
+
+          inherit (lib)
+            getExe'
+            mkForce
+            ;
+        in
         {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ (_final: prev: { gotools = prev.gotools.override { inherit go; }; }) ];
+          };
+
           treefmt = {
             programs.nixfmt.enable = true;
             programs.gofmt.enable = true;
+            settings.formatter.gofmt.command = mkForce (getExe' go "gofmt");
             programs.goimports.enable = true;
             programs.shellcheck.enable = true;
             programs.yamlfmt.enable = true;
@@ -42,14 +60,11 @@
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
-              go_1_27
+              go
               gopls
               gotools
               vhs
             ];
-
-            env = {
-            };
 
             shellHook = ''
               export GOPATH=$PWD/.gopath
@@ -59,7 +74,7 @@
             '';
           };
 
-          packages.default = pkgs.callPackage ./package.nix { };
+          packages.default = pkgs.callPackage ./package.nix { inherit go buildGoModule; };
           packages.invoice = self'.packages.default;
 
           checks = { inherit (self'.packages) invoice; };
