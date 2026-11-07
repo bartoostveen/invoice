@@ -9,7 +9,7 @@ require (
 	charm.land/glamour/v2 v2.0.1
 	dario.cat/mergo v1.0.2
 	github.com/klauspost/lctime v0.1.0
-	github.com/signintech/gopdf v0.38.3
+	github.com/signintech/gopdf v0.38.4
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/viper v1.21.0
 	gopkg.in/yaml.v3 v3.0.1
